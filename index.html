@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- WinWidgets Konfiguration: Genug Höhe für das Countik-Widget -->
+    <meta name="applicationTitle" content="TikTok Live Counter" />
+    <meta name="windowSize" content="350 420" />
+    <meta name="windowLocation" content="100 100" />
+    <meta name="windowBorderRadius" content="16" />
+    <meta name="topMost" content="true" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Counter Widget</title>
+    
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow: hidden;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            padding: 20px 20px 50px 20px; /* Viel Platz am unteren Rand */
+        }
+        #countik-widget {
+            flex: 1;
+            width: 100%;
+            min-height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .pow-countik {
+            font-size: 11px;
+            color: #666;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Das Widget-Feld -->
+    <div id="countik-widget"></div>
+
+    <!-- Der Link ganz unten -->
+    <a href="https://countik.com" target="_blank" class="pow-countik">Unterstützt von Countik™</a>
+
+    <!-- Offizielles Countik-Skript -->
+    <script>
+      (function() {
+        var countikWidget = document.createElement('script');
+        countikWidget.src = 'https://countik.com';
+        countikWidget.async = true;
+        countikWidget.onload = function() {
+          if (typeof window.initializeCountikWidget === 'function') {
+            window.initializeCountikWidget({
+              container: '#countik-widget',
+              themeColor: '#444444',
+              uniqueId: 'turbotuning1',
+              language: 'de'
+            });
+          }
+        };
+        document.head.appendChild(countikWidget);
+      })();
+    </script>
+
+</body>
+</html>
