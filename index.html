@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- WinWidgets Konfiguration: Genug Höhe für das Countik-Widget -->
+    <!-- WinWidgets Einstellungen -->
     <meta name="applicationTitle" content="TikTok Live Counter" />
-    <meta name="windowSize" content="350 420" />
+    <meta name="windowSize" content="350 360" />
     <meta name="windowLocation" content="100 100" />
     <meta name="windowBorderRadius" content="16" />
     <meta name="topMost" content="true" />
@@ -25,15 +25,21 @@
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
-            padding: 20px 20px 50px 20px; /* Viel Platz am unteren Rand */
+            padding: 15px 15px 45px 15px; /* Verhindert das Abschneiden am unteren Rand */
         }
-        #countik-widget {
+        .widget-container {
             flex: 1;
             width: 100%;
-            min-height: 280px;
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        /* Das Iframe lädt das Widget direkt ohne restriktive Skriptblockaden */
+        iframe {
+            width: 100%;
+            height: 240px;
+            border: none;
+            overflow: hidden;
         }
         .pow-countik {
             font-size: 11px;
@@ -41,37 +47,19 @@
             text-align: center;
             text-decoration: none;
             display: block;
-            padding: 10px 0;
+            padding-top: 5px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Das Widget-Feld -->
-    <div id="countik-widget"></div>
+    <!-- Widget Container mit direktem Iframe-Abruf -->
+    <div class="widget-container">
+        <iframe src="https://countik.com" scrolling="no"></iframe>
+    </div>
 
     <!-- Der Link ganz unten -->
     <a href="https://countik.com" target="_blank" class="pow-countik">Unterstützt von Countik™</a>
-
-    <!-- Offizielles Countik-Skript -->
-    <script>
-      (function() {
-        var countikWidget = document.createElement('script');
-        countikWidget.src = 'https://countik.com';
-        countikWidget.async = true;
-        countikWidget.onload = function() {
-          if (typeof window.initializeCountikWidget === 'function') {
-            window.initializeCountikWidget({
-              container: '#countik-widget',
-              themeColor: '#444444',
-              uniqueId: 'turbotuning1',
-              language: 'de'
-            });
-          }
-        };
-        document.head.appendChild(countikWidget);
-      })();
-    </script>
 
 </body>
 </html>
