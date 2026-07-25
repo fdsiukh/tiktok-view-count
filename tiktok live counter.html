@@ -1,75 +1,22 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <!-- WinWidgets Konfiguration: Deutlich mehr Höhe nach unten (340px statt 200px) -->
-    <meta name="applicationTitle" content="TikTok Live Counter" />
-    <meta name="windowSize" content="350 340" />
-    <meta name="windowLocation" content="100 100" />
-    <meta name="windowBorderRadius" content="16" />
-    <meta name="topMost" content="true" />
-
-    <meta charset="UTF-8">
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow: hidden;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-            padding: 20px 20px 45px 20px; /* 45px Freiraum ganz unten */
-        }
-        #countik-widget {
-            flex: 1;
-            width: 100%;
-            min-height: 220px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .pow-countik {
-            font-size: 11px;
-            color: #666;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            padding: 5px 0;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Das Widget-Feld -->
-    <div id="countik-widget"></div>
-
-    <!-- Der Link ganz unten -->
-    <a href="https://countik.com/de/user/turbotuning1" target="_blank" class="pow-countik">Unterstützt von Countik™</a>
-
-    <!-- Narrensicheres Laden des Scripts (Verhindert Abstürze im WebView2) -->
-    <script>
-      (function() {
-        var countikWidget = document.createElement('script');
-        countikWidget.src = 'https://countik.com/widget.js';
-        countikWidget.async = true;
-        countikWidget.onload = function() {
-          if (typeof window.initializeCountikWidget === 'function') {
-            window.initializeCountikWidget({
-              container: '#countik-widget',
-              themeColor: '#444444',
-              uniqueId: 'turbotuning1',
-              language: 'de'
-            });
-          }
-        };
-        // Direkt in den Head injizieren – schlägt niemals fehl
-        document.head.appendChild(countikWidget);
-      })();
-    </script>
-
-</body>
-</html>
+          <div id="countik-widget"></div>
+          <script>
+            (function() {
+              var countikWidget = document.createElement('script');
+              countikWidget.src = 'https://countik.com/widget.js';
+              countikWidget.async = true;
+              countikWidget.onload = function() {
+                if (typeof window.initializeCountikWidget === 'function') {
+                  window.initializeCountikWidget({
+                    container: '#countik-widget',
+                    themeColor: '#444444',
+                    uniqueId: 'turbotuning1',
+                    language: 'de'
+                  });
+                }
+              };
+              var firstScript = document.getElementsByTagName('script')[0];
+              firstScript.parentNode.insertBefore(countikWidget, firstScript);
+            })();
+          </script>
+          <a href="https://countik.com/de/user/turbotuning1" target="_blank" class="pow-countik" style="font-size:11px;color:#333;display:block;padding:4px 3px;text-decoration:none;">Unterstützt von Countik™</a>
+        
