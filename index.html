@@ -1,65 +1,51 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- WinWidgets Einstellungen -->
+    <!-- WinWidgets Meta-Tags für die richtige Fenstergröße -->
     <meta name="applicationTitle" content="TikTok Live Counter" />
-    <meta name="windowSize" content="350 360" />
-    <meta name="windowLocation" content="100 100" />
+    <meta name="windowSize" content="350 400" />
     <meta name="windowBorderRadius" content="16" />
     <meta name="topMost" content="true" />
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Counter Widget</title>
     
+    <meta charset="UTF-8">
+    <title>TikTok Counter</title>
     <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            overflow: hidden;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            box-sizing: border-box;
-            padding: 15px 15px 45px 15px; /* Verhindert das Abschneiden am unteren Rand */
-        }
-        .widget-container {
-            flex: 1;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        /* Das Iframe lädt das Widget direkt ohne restriktive Skriptblockaden */
-        iframe {
-            width: 100%;
-            height: 240px;
-            border: none;
-            overflow: hidden;
-        }
-        .pow-countik {
-            font-size: 11px;
-            color: #666;
-            text-align: center;
-            text-decoration: none;
-            display: block;
-            padding-top: 5px;
+        body { 
+            margin: 0; 
+            padding: 20px; 
+            background: #fff; 
+            font-family: sans-serif; 
         }
     </style>
 </head>
 <body>
 
-    <!-- Widget Container mit direktem Iframe-Abruf -->
-    <div class="widget-container">
-        <iframe src="https://countik.com" scrolling="no"></iframe>
-    </div>
+    <!-- Ein unsichtbares Skript-Tag, damit Ihr Code fehlerfrei läuft -->
+    <script></script>
 
-    <!-- Der Link ganz unten -->
-    <a href="https://countik.com" target="_blank" class="pow-countik">Unterstützt von Countik™</a>
+    <!-- AB HIER IHR ORIGINALER CODE -->
+    <div id="countik-widget"></div>
+    <script>
+      (function() {
+        var countikWidget = document.createElement('script');
+        countikWidget.src = 'https://countik.com/widget.js';
+        countikWidget.async = true;
+        countikWidget.onload = function() {
+          if (typeof window.initializeCountikWidget === 'function') {
+            window.initializeCountikWidget({
+              container: '#countik-widget',
+              themeColor: '#444444',
+              uniqueId: 'turbotuning1',
+              language: 'de'
+            });
+          }
+        };
+        var firstScript = document.getElementsByTagName('script')[0];
+        firstScript.parentNode.insertBefore(countikWidget, firstScript);
+      })();
+    </script>
+    <a href="https://countik.com/de/user/turbotuning1" target="_blank" class="pow-countik" style="font-size:11px;color:#333;display:block;padding:4px 3px;text-decoration:none;">Unterstützt von Countik™</a>
+    <!-- ENDE IHRER CODEVORLAGE -->
 
 </body>
 </html>
