@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta name="applicationTitle" content="TikTok Live Counter" />
-    <meta name="windowSize" content="350 420" />
-    <meta name="windowBorderRadius" content="16" />
-    <meta name="topMost" content="true" />
     <meta charset="UTF-8">
-    <title>TikTok Counter Widget</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countik Widget</title>
     <style>
-        html, body { margin: 0; padding: 0; height: 100%; background: #fff; overflow: hidden; font-family: sans-serif; }
-        body { display: flex; flex-direction: column; padding: 20px 20px 50px 20px; box-sizing: border-box; }
-        #countik-widget { flex: 1; min-height: 250px; display: flex; justify-content: center; align-items: center; }
-        .footer-link { font-size: 11px; color: #666; text-align: center; text-decoration: none; padding: 5px; }
+        body { margin: 0; padding: 0; overflow: hidden; background: transparent; font-family: sans-serif; }
     </style>
 </head>
 <body>
     <div id="countik-widget"></div>
-    <a href="https://countik.com" target="_blank" class="footer-link">Unterstützt von Countik</a>
-
     <script>
-      (function() {
-        var el = document.createElement('script');
-        el.src = 'https://countik.com/widget.js';
-        el.async = true;
-        el.onload = function() {
-          if (window.initializeCountikWidget) {
-            window.initializeCountikWidget({
-              container: '#countik-widget',
-              themeColor: '#444444',
-              uniqueId: 'turbotuning1',
-              language: 'de'
-            });
-          }
-        };
-        // Fix: Korrekte Einbindung
-        var sc = document.getElementsByTagName('script')[0];
-        if (sc) { sc.parentNode.insertBefore(el, sc); }
-      })();
+        (function() {
+            var countikWidget = document.createElement('script');
+            countikWidget.src = 'https://countik.com/widget.js';
+            countikWidget.async = true;
+            countikWidget.onload = function() {
+                if (typeof window.initializeCountikWidget === 'function') {
+                    window.initializeCountikWidget({
+                        container: '#countik-widget',
+                        themeColor: '#444444',
+                        uniqueId: 'turbotuning1',
+                        language: 'de'
+                    });
+                }
+            };
+            document.head.appendChild(countikWidget);
+        })();
     </script>
 </body>
 </html>
