@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- WinWidgets Meta-Tags für die richtige Fenstergröße -->
+    <!-- WinWidgets Meta-Tags für die korrekte Verlängerung nach unten -->
     <meta name="applicationTitle" content="TikTok Live Counter" />
     <meta name="windowSize" content="350 400" />
     <meta name="windowBorderRadius" content="16" />
     <meta name="topMost" content="true" />
     
     <meta charset="UTF-8">
-    <title>TikTok Counter</title>
+    <title>TikTok Counter Widget</title>
     <style>
         body { 
             margin: 0; 
             padding: 20px; 
-            background: #fff; 
+            background: #ffffff; 
             font-family: sans-serif; 
         }
     </style>
 </head>
 <body>
 
-    <!-- Ein unsichtbares Skript-Tag, damit Ihr Code fehlerfrei läuft -->
-    <script></script>
+    <!-- Dieses Dummy-Tag MUSS da sein, damit "firstScript[0]" im folgenden Code nicht abstürzt -->
+    <script id="dummy-placeholder"></script>
 
-    <!-- AB HIER IHR ORIGINALER CODE -->
+    <!-- START: IHR GEWÜNSCHTER CODE-BAUSTEIN -->
     <div id="countik-widget"></div>
     <script>
       (function() {
         var countikWidget = document.createElement('script');
-        countikWidget.src = 'https://countik.com/widget.js';
+        countikWidget.src = 'https://countik.com';
         countikWidget.async = true;
         countikWidget.onload = function() {
           if (typeof window.initializeCountikWidget === 'function') {
@@ -44,8 +44,8 @@
         firstScript.parentNode.insertBefore(countikWidget, firstScript);
       })();
     </script>
-    <a href="https://countik.com/de/user/turbotuning1" target="_blank" class="pow-countik" style="font-size:11px;color:#333;display:block;padding:4px 3px;text-decoration:none;">Unterstützt von Countik™</a>
-    <!-- ENDE IHRER CODEVORLAGE -->
+    <a href="https://countik.com" target="_blank" class="pow-countik" style="font-size:11px;color:#333;display:block;padding:4px 3px;text-decoration:none;">Unterstützt von Countik™</a>
+    <!-- ENDE: IHR GEWÜNSCHTER CODE-BAUSTEIN -->
 
 </body>
 </html>
